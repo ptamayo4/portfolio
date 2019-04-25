@@ -1,0 +1,238 @@
+body {
+  background-color: gray;
+}
+#monitor {
+  margin: 0 auto;
+  background-image: url("/static/images/monitor.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -250px;
+  margin-left: -250px;
+}
+#screen {
+  display: none;
+  position: relative;
+  top: 258px;
+  left: 280px;
+  background-color: black;
+  background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
+  color: white;
+  font: 1.3em Inconsolata, monospace;
+  text-shadow: 0 0 5px #c8c8c8;
+  line-height: 0;
+  padding: 5px;
+  width: 941px;
+  height: 578px;
+}
+
+#screen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+#main {
+  margin-top: 10px;
+  display: inline-block;
+}
+
+#cursor {
+  margin-left: -3px;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#note {
+  transform: rotate(3deg);
+  position: absolute;
+  top: 0px;
+  left: 60%;
+}
+
+.postit {
+  color: black;
+  font-family: "Covered By Your Grace", cursive !important;
+  line-height: 1;
+  text-align: center;
+  width: 250px;
+  margin: 25px;
+  height: 200px;
+  padding-top: 15px;
+  position: absolute;
+  left: 280px;
+  top: -30px;
+  font-family: "Reenie Beanie";
+  font-size: 22px;
+  border-bottom-right-radius: 60px 5px;
+  display: inline-block;
+  background: #ffff88; /* Old browsers */
+  background: -moz-linear-gradient(
+    -45deg,
+    #ffff88 81%,
+    #ffff88 82%,
+    #ffff88 82%,
+    #ffffc6 100%
+  ); /* FF3.6+ */
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(81%, #ffff88),
+    color-stop(82%, #ffff88),
+    color-stop(82%, #ffff88),
+    color-stop(100%, #ffffc6)
+  ); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(
+    -45deg,
+    #ffff88 81%,
+    #ffff88 82%,
+    #ffff88 82%,
+    #ffffc6 100%
+  ); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(
+    -45deg,
+    #ffff88 81%,
+    #ffff88 82%,
+    #ffff88 82%,
+    #ffffc6 100%
+  ); /* Opera 11.10+ */
+  background: -ms-linear-gradient(
+    -45deg,
+    #ffff88 81%,
+    #ffff88 82%,
+    #ffff88 82%,
+    #ffffc6 100%
+  ); /* IE10+ */
+  background: linear-gradient(
+    135deg,
+    #ffff88 81%,
+    #ffff88 82%,
+    #ffff88 82%,
+    #ffffc6 100%
+  ); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffffc6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.postit:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: -0px;
+  bottom: 20px;
+  width: 200px;
+  height: 25px;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 15px 5px rgba(0, 0, 0, 0.4);
+  -moz-transform: matrix(-1, -0.1, 0, 1, 0, 0);
+  -webkit-transform: matrix(-1, -0.1, 0, 1, 0, 0);
+  -o-transform: matrix(-1, -0.1, 0, 1, 0, 0);
+  -ms-transform: matrix(-1, -0.1, 0, 1, 0, 0);
+  transform: matrix(-1, -0.1, 0, 1, 0, 0);
+}
+
+.print {
+  margin-left: 30px;
+}
+
+output {
+  margin-bottom: 5px;
+}
+
+#cd-stack {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    top: 450px;
+    left: 260px;
+    /* border: 1px solid black; */
+}
+
+.cd {
+    /* left: 50px; */
+    position: absolute;
+    display: inline-block;
+    width: 150px;
+    margin: 0 auto;
+}
+
+#cd-2 {
+    top: -6px;
+    transform: rotate(6deg)
+}
+
+#little-post-it {
+    width: 70px;
+    height: 60px;
+    background-color: #FDFF9A;
+}
+
+#note-mover {
+    left: 390px;
+    top: 95px;
+    position: absolute;
+    transform: rotate(4deg)
+}
+
+#coffee-space {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 1000px;
+  top: 297px;
+}
+
+#coffee {
+  position: relative;
+  top: 140px;
+}
+
+.steam {
+  position: absolute;
+  top: 50px;
+  left: 80px;
+  display: none;
+}
+
+#name {
+
+}
+
+#name > h1 {
+  margin: 0 auto;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* fonts */
+/* font-family: 'Monofett', cursive;
+font-family: 'Heebo', sans-serif;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Bungee Shade', cursive;
+font-family: 'Montserrat Subrayada', sans-serif;
+font-family: 'Bungee Hairline', cursive; */
