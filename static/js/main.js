@@ -1,71 +1,86 @@
-$(document).ready(function(){
+$(document).ready(function () {
     // startUp();
     var selectedComponent;
     var didStart = false;
     var steamHidden = false;
+    var selectedTab = "";
 
-    $('.postit').click(function( event ) {
+    $('.postit').click(function (event) {
         // event.stopPropagation();
         // Do something
-      })
-
-    $('#cd-stack').hover(function(){
-        console.log("in");
-        $('#cd-1').animate({'top': '-450px'})
-        $('#cd-3').animate({'top': '-300px'})
-        $('#cd-4').animate({'top': '-150px'})
-    }, function(){
-        console.log("out");
-        $('#cd-1').animate({'top': '-0px'})
-        $('#cd-3').animate({'top': '-0px'})
-        $('#cd-4').animate({'top': '-0px'})
     })
 
-    $('#proj1').click(function(){
+    $('#headers>div>h2').hover(function () {
+        $(this).attr('class', 'activated');
+    }, function () {
+        if (selectedTab != $(this).text()) {
+            $(this).attr('class', '')
+        }
+    })
+
+    $('#headers>div>h2').click(function () {
+        selectedTab = $(this).text();
+        $(this).attr('class', 'activated');
+        $(this).siblings('.underline').show();
+        $(this).siblings('.underline').animate({
+            width: "77%",
+            height: "1px"
+        }, 800);
+        $('#headers>div>h2').not(this).siblings('.underline').animate({
+            'width': '0%',
+            'margin-left': '50%'
+        })
+        $('#headers>div>h2').not(this).attr('class', '')
+    })
+
+    $('#cd-stack').hover(function () {
+        console.log("in");
+        $('#cd-1').animate({ 'top': '-450px' })
+        $('#cd-3').animate({ 'top': '-300px' })
+        $('#cd-4').animate({ 'top': '-150px' })
+    }, function () {
+        console.log("out");
+        $('#cd-1').animate({ 'top': '-0px' })
+        $('#cd-3').animate({ 'top': '-0px' })
+        $('#cd-4').animate({ 'top': '-0px' })
+    })
+
+    $('#proj1').click(function () {
         console.log("clicked");
         console.log($(this));
     });
 
-    // $('#monitor').hover(function(){
-    //     if(selectedComponent != 'pc'){
-    //         $( this ).css('opacity', '.5');
-    //         $( this ).css('scale', '1.2');
-    //     }
-    // }, function(){
-    //     $( this ).css('opacity', '1');
-    // })
-
     var writer = {
-        "openTags" : '<pre><output>',
-        "closingTags" : '</output></pre>',
-        "lineBeginning" : "$> ",
-        "cursor" : "<span id='cursor'>|</span>",
-        "currString" : "",
-        "currStringLength" : 0,
-        "totalLines" : [],
+        "openTags": '<pre><output>',
+        "closingTags": '</output></pre>',
+        "lineBeginning": "$> ",
+        "cursor": "<span id='cursor'>|</span>",
+        "currString": "",
+        "currStringLength": 0,
+        "totalLines": [],
     }
 
     var cmds = {
-        "bio" : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus exercitationem at quod esse? Sit vero architecto error enim facere officia fugiat dicta dolores? Sequi tempore, alias dolores eius nulla delectus.",
-        "projects" : "List of projects",
-        "ls" : "list stuff",
-        "helloworld.txt" : startUp
+        "bio": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus exercitationem at quod esse? Sit vero architecto error enim facere officia fugiat dicta dolores? Sequi tempore, alias dolores eius nulla delectus.",
+        "projects": "List of projects",
+        "ls": "list stuff",
+        "helloworld.txt": startUp
     }
 
     // Runs once to start first line
     $('#main').html(writer.openTags + writer.lineBeginning + writer.currString + writer.cursor + writer.closingTags);
-     
-    $(document).keypress(function(e){
-        if(e.key == 'Enter'){
+
+    $(document).keypress(function (e) {
+        if (e.key == 'Enter') {
             // 98 max
             lineAdder();
             writer.currStringLength = 0;
         } else {
-            if(writer.currStringLength == 98){
+            if (writer.currStringLength == 98) {
                 console.log("git it");
                 writer.currString += writer.closingTags + writer.openTags;
                 writer.currStringLength = 0;
-            }else {
+            } else {
                 console.log("nope");
                 console.log(writer.currString.length);
                 writer.currString += e.key;
@@ -75,20 +90,20 @@ $(document).ready(function(){
         lineDrawer();
     });
 
-    $(document).keydown(function(e){
-        if(e.key == 'Backspace'){
-            writer.currString = writer.currString.slice(0,writer.currString.length-1);
+    $(document).keydown(function (e) {
+        if (e.key == 'Backspace') {
+            writer.currString = writer.currString.slice(0, writer.currString.length - 1);
             lineDrawer();
         }
     });
 
-    $('#monitor').click(function(){
-        if(selectedComponent == 'pc'){
+    $('#monitor').click(function () {
+        if (selectedComponent == 'pc') {
             $(this).css({
-                'width':'500px',
-                'height' : '500px',
-                'margin-top' : '-250px',
-                'margin-left' : '-250px',
+                'width': '500px',
+                'height': '500px',
+                'margin-top': '-250px',
+                'margin-left': '-250px',
             })
             $('#screen').hide();
             $('#coffee').show();
@@ -99,7 +114,7 @@ $(document).ready(function(){
             steamHidden = false;
             selectedComponent = null;
         } else {
-            if(!didStart){
+            if (!didStart) {
                 startUp();
                 didStart = true;
             }
@@ -111,10 +126,10 @@ $(document).ready(function(){
             $('#coffee-space').css("display", "none")
             steamHidden = true;
             $(this).css({
-                'width':'1500px',
-                'height' : '130vh',
-                'margin-top' : '-590px',
-                'margin-left' : '-750px',
+                'width': '1500px',
+                'height': '130vh',
+                'margin-top': '-590px',
+                'margin-left': '-750px',
                 // 'top' : '50%'
             })
             $('#monitor').css('opacity', '1');
@@ -122,11 +137,11 @@ $(document).ready(function(){
         }
     })
 
-    function cmdChecker(currString){
+    function cmdChecker(currString) {
         console.log(currString);
         var newStr;
-        if(cmds[currString]){
-            if(typeof(cmds[currString]) == 'function'){
+        if (cmds[currString]) {
+            if (typeof (cmds[currString]) == 'function') {
                 cmds[currString]();
                 return;
             } else {
@@ -135,20 +150,20 @@ $(document).ready(function(){
         } else {
             newStr = currString + ": command not found"
         }
-        writer.totalLines.push(writer.openTags + '<span class="print">' +newStr + '</span>' + writer.closingTags);
+        writer.totalLines.push(writer.openTags + '<span class="print">' + newStr + '</span>' + writer.closingTags);
         lineDrawer();
     }
 
-    function lineAdder(){
+    function lineAdder() {
         let newLine = writer.openTags + writer.lineBeginning + writer.currString + writer.closingTags;
         writer.totalLines.push(newLine);
         cmdChecker(writer.currString);
         writer.currString = "";
     }
 
-    function lineDrawer(){
+    function lineDrawer() {
         let final = ""
-        for(var i = 0; i < writer.totalLines.length; i++){
+        for (var i = 0; i < writer.totalLines.length; i++) {
             final += writer.totalLines[i];
         }
         let newLine = writer.openTags + writer.lineBeginning + writer.currString + writer.cursor + writer.closingTags;
@@ -157,7 +172,7 @@ $(document).ready(function(){
         // window.scrollTo(0,document.body.scrollHeight);
     }
 
-    function startUp(){
+    function startUp() {
         var nameAscii = [
             String.raw`<pre class="print"><outout>__/\\\\\\\\\\\\\____/\\\\\\\\\\\\\\\____/\\\_______________________________        </outout></pre>`,
             String.raw`<pre class="print"><outout> _\/\\\/////////\\\_\///////\\\/////____\/\\\_______________________________       </outout></pre>`,
@@ -170,48 +185,47 @@ $(document).ready(function(){
             String.raw`<pre class="print"><outout>        _\///____________________\///____\///////\//____\//////////______\///______</outout></pre>`,
         ]
         var i = 0;
-        var nameInterval = setInterval(function(){
+        var nameInterval = setInterval(function () {
             writer.totalLines.push(nameAscii[i]);
             lineDrawer();
             i++;
-            if(i >= nameAscii.length){
+            if (i >= nameAscii.length) {
                 clearInterval(nameInterval);
             }
         }, 200)
     }
 
-    function coffeeSteam(){
+    function coffeeSteam() {
         var steam_array = $('.steam').toArray();
-        setInterval(function(){
-            if(!steamHidden){
+        setInterval(function () {
+            if (!steamHidden) {
                 $('.steam').hide()
                 var firstSteam = $(steam_array[Math.floor(Math.random() * steam_array.length)]);
                 var secondSteam = $(steam_array[Math.floor(Math.random() * steam_array.length)]);
                 firstSteam.css({
-                    'top' : String(Math.floor(Math.random() * 20) + 50) + 'px',
-                    'left' : String(Math.floor(Math.random() * 61) + 50) + 'px',
-                    'opacity' : '.4'
-                }) 
+                    'top': String(Math.floor(Math.random() * 20) + 50) + 'px',
+                    'left': String(Math.floor(Math.random() * 61) + 50) + 'px',
+                    'opacity': '.4'
+                })
                 secondSteam.css({
-                    'top' : String(Math.floor(Math.random() * 61) + 30) + 'px',
-                    'left' : String(Math.floor(Math.random() * 61) + 55) + 'px',
-                    'opacity' : '.4'
+                    'top': String(Math.floor(Math.random() * 61) + 30) + 'px',
+                    'left': String(Math.floor(Math.random() * 61) + 55) + 'px',
+                    'opacity': '.4'
                 });
-                var flip1 = Math.floor(Math.random()*2);
+                var flip1 = Math.floor(Math.random() * 2);
                 var flip2 = Math.floor(Math.random() * 2);
-                if(flip1){
+                if (flip1) {
                     firstSteam.css({
-                        '-webkit-transform' : 'scaleX(-1)',
-                        'transform' : 'scaleX(-1)'
-                    }) 
+                        '-webkit-transform': 'scaleX(-1)',
+                        'transform': 'scaleX(-1)'
+                    })
                 }
-                if(flip2){
+                if (flip2) {
                     secondSteam.css({
-                        '-webkit-transform' : 'scaleX(-1)',
-                        'transform' : 'scaleX(-1)'
-                    }) 
+                        '-webkit-transform': 'scaleX(-1)',
+                        'transform': 'scaleX(-1)'
+                    })
                 }
-                console.log(flip1,flip2);
                 firstSteam.show()
                 secondSteam.show()
             }

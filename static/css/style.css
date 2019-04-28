@@ -271,20 +271,29 @@ output {
   height: 15%;
 }
 
-#headers > h2 {
+#headers > div {
   display: inline-block;
   width: 32%;
   margin: 0px;
   padding: 0px;
-  margin-top: 35px;
+  /* border: 1px solid black; */
+}
+
+#headers > div > h2 {
+  vertical-align: top;
+  margin: 0px;
+  margin-top: 25px;
   font-family: 'Bungee Hairline', cursive;
   transition: all .2s ease-in-out;
   color: gray;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1;
 }
 
-#headers>h2:hover {
+.activated {
   transform: scale(1.1);
-  color: black;
+  color: black !important;
   cursor: pointer;
 }
 
@@ -296,5 +305,15 @@ output {
   height: 60%;
   top: 22%;
   left: 5%;
+}
+
+.underline {
+  width: 0%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  height: 1px;
+  color: black;
+  display: none;
 }
 /* fonts */
