@@ -2,7 +2,7 @@ $(document).ready(function(){
     // startUp();
     var selectedComponent;
     var didStart = false;
-
+    var steamHidden = false;
 
     $('#cd-stack').hover(function(){
         console.log("in");
@@ -14,7 +14,6 @@ $(document).ready(function(){
         $('#cd-1').animate({'top': '-0px'})
         $('#cd-3').animate({'top': '-0px'})
         $('#cd-4').animate({'top': '-0px'})
-        // $('#cd-2').animate({'top': '6px'})
     })
 
     $('#proj1').click(function(){
@@ -25,6 +24,7 @@ $(document).ready(function(){
     $('#monitor').hover(function(){
         if(selectedComponent != 'pc'){
             $( this ).css('opacity', '.5');
+            $( this ).css('scale', '1.2');
         }
     }, function(){
         $( this ).css('opacity', '1');
@@ -74,6 +74,9 @@ $(document).ready(function(){
                 'margin-left' : '-250px',
             })
             $('#screen').hide();
+            $('#coffee').show();
+            $('.steam').hide();
+            steamHidden = false;
             selectedComponent = null;
         } else {
             if(!didStart){
@@ -81,11 +84,15 @@ $(document).ready(function(){
                 didStart = true;
             }
             $('#screen').show();
+            $('#coffee').hide();
+            $('.steam').hide();
+            steamHidden = true;
             $(this).css({
                 'width':'1500px',
                 'height' : '130vh',
                 'margin-top' : '-560px',
                 'margin-left' : '-750px',
+                // 'top' : '50%'
             })
             $('#monitor').css('opacity', '1');
             selectedComponent = 'pc';
@@ -124,7 +131,7 @@ $(document).ready(function(){
         let newLine = writer.openTags + writer.lineBeginning + writer.currString + writer.cursor + writer.closingTags;
         final += newLine;
         $('#main').html(final);
-        window.scrollTo(0,document.body.scrollHeight);
+        // window.scrollTo(0,document.body.scrollHeight);
     }
 
     function startUp(){
@@ -150,34 +157,42 @@ $(document).ready(function(){
         }, 200)
     }
 
-
-    // coffee steam
     function coffeeSteam(){
-        // var i = 0;
         var steam_array = $('.steam').toArray();
         setInterval(function(){
-            $('.steam').hide()
-
-            var firstSteam = $(steam_array[Math.floor(Math.random() * steam_array.length)]);
-            var secondSteam = $(steam_array[Math.floor(Math.random() * steam_array.length)]);
-            
-            
-            firstSteam.css({
-                'top' : String(Math.floor(Math.random() * 20) + 50) + 'px',
-                'left' : String(Math.floor(Math.random() * 61) + 50) + 'px',
-            }) 
-            secondSteam.css({
-                'top' : String(Math.floor(Math.random() * 61) + 30) + 'px',
-                'left' : String(Math.floor(Math.random() * 61) + 55) + 'px',
-            }) 
-            firstSteam.show()
-            secondSteam.show()
-            // i++;
-            // if(i >= steam_array.length - 1){
-            //     i = 0;
-            // }
-        }, 1200)
+            if(!steamHidden){
+                $('.steam').hide()
+                var firstSteam = $(steam_array[Math.floor(Math.random() * steam_array.length)]);
+                var secondSteam = $(steam_array[Math.floor(Math.random() * steam_array.length)]);
+                firstSteam.css({
+                    'top' : String(Math.floor(Math.random() * 20) + 50) + 'px',
+                    'left' : String(Math.floor(Math.random() * 61) + 50) + 'px',
+                    'opacity' : '.4'
+                }) 
+                secondSteam.css({
+                    'top' : String(Math.floor(Math.random() * 61) + 30) + 'px',
+                    'left' : String(Math.floor(Math.random() * 61) + 55) + 'px',
+                    'opacity' : '.4'
+                });
+                var flip1 = Math.floor(Math.random()*2);
+                var flip2 = Math.floor(Math.random() * 2);
+                if(flip1){
+                    firstSteam.css({
+                        '-webkit-transform' : 'scaleX(-1)',
+                        'transform' : 'scaleX(-1)'
+                    }) 
+                }
+                if(flip2){
+                    secondSteam.css({
+                        '-webkit-transform' : 'scaleX(-1)',
+                        'transform' : 'scaleX(-1)'
+                    }) 
+                }
+                console.log(flip1,flip2);
+                firstSteam.show()
+                secondSteam.show()
+            }
+        }, 800)
     }
     coffeeSteam();
-    
 });

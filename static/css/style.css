@@ -10,7 +10,7 @@ body {
   height: 500px;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 55%;
   margin-top: -250px;
   margin-left: -250px;
 }
@@ -28,6 +28,7 @@ body {
   padding: 5px;
   width: 941px;
   height: 578px;
+  
 }
 
 #screen::after {
@@ -203,8 +204,8 @@ output {
   width: 300px;
   height: 300px;
   position: absolute;
-  left: 1000px;
-  top: 297px;
+  left: 950px;
+  top: 333px;
 }
 
 #coffee {
@@ -215,24 +216,33 @@ output {
 .steam {
   position: absolute;
   top: 50px;
-  left: 80px;
+  left: 85px;
   display: none;
 }
 
-#name {
 
+#name {
+  position: absolute;
+  /* top: -120px; */
+  width: 100%;
+  text-align: center;
+
+  /* font-family: 'Monofett', cursive; */
+  /* font-family: 'Heebo', sans-serif; */
+  /* font-family: 'Press Start 2P', cursive; */
+  /* font-family: 'Bungee Shade', cursive; */
+  font-family: 'Montserrat Subrayada', sans-serif;
+  font-family: 'Bungee Hairline', cursive;
 }
 
-#name > h1 {
-  margin: 0 auto;
-  margin: 0px;
-  padding: 0px;
+#tiny-green {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  background-color: limegreen;
+  top: 445px;
+  left: 420px;
+  animation: pulse 1s infinite;
 }
 
 /* fonts */
-/* font-family: 'Monofett', cursive;
-font-family: 'Heebo', sans-serif;
-font-family: 'Press Start 2P', cursive;
-font-family: 'Bungee Shade', cursive;
-font-family: 'Montserrat Subrayada', sans-serif;
-font-family: 'Bungee Hairline', cursive; */
