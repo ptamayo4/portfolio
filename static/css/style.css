@@ -1,7 +1,14 @@
 body {
-  background-color: gray;
+  /* background-color: gray; */
+  height: 50vh;
+  overflow: hidden;
+  padding: 0px;
+  margin: 0px;
 }
+
 #monitor {
+
+  /* border: 1px solid black; */
   margin: 0 auto;
   background-image: url("/static/images/monitor.png");
   background-repeat: no-repeat;
@@ -13,6 +20,8 @@ body {
   top: 55%;
   margin-top: -250px;
   margin-left: -250px;
+  cursor: pointer;
+
 }
 #screen {
   display: none;
@@ -204,8 +213,8 @@ output {
   width: 300px;
   height: 300px;
   position: absolute;
-  left: 950px;
-  top: 333px;
+  left: 66%; 
+  top: 50%;
 }
 
 #coffee {
@@ -231,7 +240,7 @@ output {
   /* font-family: 'Heebo', sans-serif; */
   /* font-family: 'Press Start 2P', cursive; */
   /* font-family: 'Bungee Shade', cursive; */
-  font-family: 'Montserrat Subrayada', sans-serif;
+  /* font-family: 'Montserrat Subrayada', sans-serif; */
   font-family: 'Bungee Hairline', cursive;
 }
 
@@ -245,4 +254,47 @@ output {
   animation: pulse 1s infinite;
 }
 
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }
+
+
+#easy-mode {
+  /* background-color: green; */
+  width: 35%;
+  height: 100%;
+  /* border: 1px solid black; */
+}
+
+#headers {
+  width: 100%;
+  border: 1px solid black;
+  height: 15%;
+}
+
+#headers > h2 {
+  display: inline-block;
+  width: 32%;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 35px;
+  font-family: 'Bungee Hairline', cursive;
+  transition: all .2s ease-in-out;
+  color: gray;
+}
+
+#headers>h2:hover {
+  transform: scale(1.1);
+  color: black;
+  cursor: pointer;
+}
+
+#main-section {
+  padding: 0px;
+  width: 90%;
+  position: absolute;
+  /* border: 1px solid black; */
+  height: 60%;
+  top: 22%;
+  left: 5%;
+}
 /* fonts */

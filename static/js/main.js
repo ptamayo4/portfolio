@@ -4,6 +4,11 @@ $(document).ready(function(){
     var didStart = false;
     var steamHidden = false;
 
+    $('.postit').click(function( event ) {
+        // event.stopPropagation();
+        // Do something
+      })
+
     $('#cd-stack').hover(function(){
         console.log("in");
         $('#cd-1').animate({'top': '-450px'})
@@ -21,14 +26,14 @@ $(document).ready(function(){
         console.log($(this));
     });
 
-    $('#monitor').hover(function(){
-        if(selectedComponent != 'pc'){
-            $( this ).css('opacity', '.5');
-            $( this ).css('scale', '1.2');
-        }
-    }, function(){
-        $( this ).css('opacity', '1');
-    })
+    // $('#monitor').hover(function(){
+    //     if(selectedComponent != 'pc'){
+    //         $( this ).css('opacity', '.5');
+    //         $( this ).css('scale', '1.2');
+    //     }
+    // }, function(){
+    //     $( this ).css('opacity', '1');
+    // })
 
     var writer = {
         "openTags" : '<pre><output>',
@@ -36,6 +41,7 @@ $(document).ready(function(){
         "lineBeginning" : "$> ",
         "cursor" : "<span id='cursor'>|</span>",
         "currString" : "",
+        "currStringLength" : 0,
         "totalLines" : [],
     }
 
@@ -51,9 +57,20 @@ $(document).ready(function(){
      
     $(document).keypress(function(e){
         if(e.key == 'Enter'){
+            // 98 max
             lineAdder();
+            writer.currStringLength = 0;
         } else {
-            writer.currString += e.key;  
+            if(writer.currStringLength == 98){
+                console.log("git it");
+                writer.currString += writer.closingTags + writer.openTags;
+                writer.currStringLength = 0;
+            }else {
+                console.log("nope");
+                console.log(writer.currString.length);
+                writer.currString += e.key;
+                writer.currStringLength += 1;
+            }
         }
         lineDrawer();
     });
@@ -75,7 +92,10 @@ $(document).ready(function(){
             })
             $('#screen').hide();
             $('#coffee').show();
+            $('#little-post-it').show();
             $('.steam').hide();
+            $('#monitor').attr("class", "grow")
+            $('#coffee-space').css("display", "block")
             steamHidden = false;
             selectedComponent = null;
         } else {
@@ -86,11 +106,14 @@ $(document).ready(function(){
             $('#screen').show();
             $('#coffee').hide();
             $('.steam').hide();
+            $('#little-post-it').hide();
+            $('#monitor').attr("class", "")
+            $('#coffee-space').css("display", "none")
             steamHidden = true;
             $(this).css({
                 'width':'1500px',
                 'height' : '130vh',
-                'margin-top' : '-560px',
+                'margin-top' : '-590px',
                 'margin-left' : '-750px',
                 // 'top' : '50%'
             })
