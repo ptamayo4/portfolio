@@ -267,19 +267,22 @@ output {
 
 #headers {
   width: 100%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 15%;
 }
 
 #headers > div {
   display: inline-block;
+  vertical-align: top;
   width: 32%;
   margin: 0px;
   padding: 0px;
+  text-align: center;
   /* border: 1px solid black; */
 }
 
-#headers > div > h2 {
+.regtext {
+  display: inline-block;
   vertical-align: top;
   margin: 0px;
   margin-top: 25px;
@@ -317,3 +320,41 @@ output {
   display: none;
 }
 /* fonts */
+#sign {
+  text-align: center;
+}
+
+#sign > .regtext {
+  display: inline-block;
+  margin-left: 20px; 
+  margin-top: 20px;
+}
+
+#lbod {
+  padding: 30px;
+  /* border: 1px solid black; */
+  height: 43vh;
+}
+
+.bodtext {
+  font-family: 'Monofett', cursive;
+  font-family: 'Heebo', sans-serif;
+  /* font-family: 'Press Start 2P', cursive; */
+  /* font-family: 'Bungee Shade', cursive; */
+  /* font-family: 'Montserrat Subrayada', sans-serif; */
+  font-family: 'Valera Round', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Bungee Hairline', cursive;
+
+  /* font-family: 'Source Code Pro', sans-serif; */
+  font-size: 24px;
+  font-weight:1000;
+}
+
+.boxl {
+  /* margin-left: 20px; */
+  width: 431px;
+  /* border: 1px solid black; */
+  display: inline-block;
+  vertical-align: top;
+}

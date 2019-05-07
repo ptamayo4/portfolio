@@ -6,31 +6,31 @@ $(document).ready(function () {
     var selectedTab = "";
 
     $('.postit').click(function (event) {
-        // event.stopPropagation();
+        event.stopPropagation();
         // Do something
     })
 
     $('#headers>div>h2').hover(function () {
-        $(this).attr('class', 'activated');
+        $(this).attr('class', 'activated regtext');
     }, function () {
         if (selectedTab != $(this).text()) {
-            $(this).attr('class', '')
+            $(this).attr('class', 'regtext')
         }
     })
 
     $('#headers>div>h2').click(function () {
         selectedTab = $(this).text();
-        $(this).attr('class', 'activated');
-        $(this).siblings('.underline').show();
+        $(this).attr('class', 'activated regtext');
+        $(this).siblings('.underline').show();        
         $(this).siblings('.underline').animate({
-            width: "77%",
+            width: $(this).width() + 8,
             height: "1px"
         }, 800);
         $('#headers>div>h2').not(this).siblings('.underline').animate({
             'width': '0%',
             'margin-left': '50%'
         })
-        $('#headers>div>h2').not(this).attr('class', '')
+        $('#headers>div>h2').not(this).attr('class', 'regtext')
     })
 
     $('#cd-stack').hover(function () {
